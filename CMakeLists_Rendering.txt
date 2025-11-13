@@ -1,0 +1,91 @@
+cmake_minimum_required(VERSION 3.10)
+project(ARPGRenderingSystem)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find required packages
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(SDL2 REQUIRED)
+find_package(GLM REQUIRED)
+
+# Include directories
+include_directories(
+    ${OPENGL_INCLUDE_DIRS}
+    ${GLEW_INCLUDE_DIRS}
+    ${SDL2_INCLUDE_DIRS}
+    ${GLM_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/Rendering
+)
+
+# Source files
+set(RENDERING_SOURCES
+    src/Rendering/Shader.cpp
+    src/Rendering/Texture.cpp
+    src/Rendering/Camera.cpp
+    src/Rendering/Sprite.cpp
+    src/Rendering/Animation.cpp
+    src/Rendering/ParticleSystem.cpp
+    src/Rendering/Renderer.cpp
+)
+
+set(RENDERING_HEADERS
+    src/Rendering/Shader.h
+    src/Rendering/Texture.h
+    src/Rendering/Camera.h
+    src/Rendering/Sprite.h
+    src/Rendering/Animation.h
+    src/Rendering/ParticleSystem.h
+    src/Rendering/Renderer.h
+)
+
+# Create rendering library
+add_library(RenderingSystem STATIC
+    ${RENDERING_SOURCES}
+    ${RENDERING_HEADERS}
+)
+
+target_link_libraries(RenderingSystem
+    ${OPENGL_LIBRARIES}
+    ${GLEW_LIBRARIES}
+    ${SDL2_LIBRARIES}
+)
+
+# Example executable
+add_executable(RenderingExample
+    src/Rendering/RenderingExample.cpp
+)
+
+target_link_libraries(RenderingExample
+    RenderingSystem
+    ${OPENGL_LIBRARIES}
+    ${GLEW_LIBRARIES}
+    ${SDL2_LIBRARIES}
+)
+
+# Copy assets to build directory
+file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
+
+# Installation
+install(TARGETS RenderingSystem DESTINATION lib)
+install(FILES ${RENDERING_HEADERS} DESTINATION include/Rendering)
+install(DIRECTORY assets DESTINATION share/${PROJECT_NAME})
+
+# Compiler warnings
+if(MSVC)
+    target_compile_options(RenderingSystem PRIVATE /W4)
+else()
+    target_compile_options(RenderingSystem PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+# Enable optimizations for Release builds
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    if(MSVC)
+        target_compile_options(RenderingSystem PRIVATE /O2)
+    else()
+        target_compile_options(RenderingSystem PRIVATE -O3 -march=native)
+    endif()
+endif()
