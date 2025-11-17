@@ -1,0 +1,425 @@
+@import '../../styles/variables';
+
+.vendor-recipes {
+  background: $bg-panel;
+  border: 1px solid $border-primary;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  color: $poe-text-primary;
+  max-height: 850px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-lg;
+  min-width: 600px;
+
+  .vendor-recipes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-secondary;
+
+    h3 {
+      margin: 0;
+      color: $poe-gold;
+      font-size: $font-xl;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $poe-text-secondary;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $poe-text-primary;
+        background: $bg-hover;
+        border-radius: $radius-sm;
+      }
+    }
+  }
+
+  .search-section {
+    margin-bottom: $spacing-md;
+
+    .search-input {
+      width: 100%;
+      background: $bg-secondary;
+      border: 1px solid $border-secondary;
+      border-radius: $radius-md;
+      padding: $spacing-sm $spacing-md;
+      color: $poe-text-primary;
+      font-size: $font-md;
+      transition: $transition-fast;
+
+      &:focus {
+        outline: none;
+        border-color: $poe-gold;
+      }
+
+      &::placeholder {
+        color: $poe-text-dim;
+      }
+    }
+  }
+
+  .filter-section {
+    margin-bottom: $spacing-md;
+
+    .category-filters {
+      display: flex;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-sm;
+      flex-wrap: wrap;
+
+      .category-btn {
+        background: $bg-secondary;
+        border: 1px solid $border-secondary;
+        color: $poe-text-primary;
+        padding: 6px 12px;
+        border-radius: $radius-md;
+        font-size: $font-sm;
+        cursor: pointer;
+        transition: $transition-fast;
+
+        &:hover {
+          border-color: $poe-gold;
+          background: $bg-hover;
+        }
+
+        &.active {
+          background: $poe-gold;
+          color: $poe-dark-bg;
+          border-color: $poe-gold;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .view-options {
+      display: flex;
+      justify-content: flex-end;
+
+      .favorites-toggle {
+        background: $bg-secondary;
+        border: 1px solid $border-secondary;
+        color: $poe-text-primary;
+        padding: 6px 12px;
+        border-radius: $radius-md;
+        font-size: $font-sm;
+        cursor: pointer;
+        transition: $transition-fast;
+
+        &:hover {
+          border-color: $poe-gold;
+        }
+
+        &.active {
+          background: rgba($poe-gold, 0.2);
+          border-color: $poe-gold;
+          color: $poe-gold;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .recipes-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-sm;
+    background: $bg-secondary;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-md;
+    font-size: $font-sm;
+
+    .valuable-count {
+      color: $poe-gold;
+      font-weight: 600;
+    }
+  }
+
+  .recipes-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: $spacing-md;
+
+    .empty-state {
+      text-align: center;
+      padding: $spacing-xl;
+      color: $poe-text-dim;
+
+      p {
+        margin: $spacing-sm 0;
+      }
+
+      .hint {
+        font-size: $font-sm;
+        font-style: italic;
+      }
+    }
+
+    .recipe-card {
+      background: $bg-secondary;
+      border: 1px solid $border-secondary;
+      border-radius: $radius-md;
+      padding: $spacing-md;
+      margin-bottom: $spacing-sm;
+      transition: $transition-fast;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $border-hover;
+        background: lighten($bg-secondary, 2%);
+      }
+
+      &.expanded {
+        border-color: $poe-gold;
+      }
+
+      .recipe-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacing-sm;
+
+        .recipe-title {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+          flex: 1;
+
+          .favorite-btn {
+            background: none;
+            border: none;
+            color: $poe-gold;
+            font-size: $font-lg;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $transition-fast;
+
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+
+          h4 {
+            margin: 0;
+            color: $poe-gold;
+            font-size: $font-md;
+            font-weight: 600;
+          }
+
+          .category-badge {
+            background: rgba($info, 0.2);
+            color: $info;
+            padding: 2px 8px;
+            border-radius: $radius-sm;
+            font-size: $font-xs;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+
+        .recipe-indicators {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+
+          .profitability-indicator,
+          .difficulty-indicator {
+            font-size: $font-md;
+          }
+
+          .expand-icon {
+            color: $poe-text-dim;
+            font-size: $font-xs;
+          }
+        }
+      }
+
+      .recipe-result {
+        color: $poe-text-primary;
+        font-size: $font-sm;
+        margin-bottom: $spacing-sm;
+        padding-left: 32px; // Align with title after favorite button
+
+        strong {
+          color: $poe-text-secondary;
+        }
+      }
+
+      .recipe-details {
+        padding-left: 32px; // Align with title
+        padding-top: $spacing-sm;
+        border-top: 1px solid $border-secondary;
+        animation: slideDown 0.2s ease;
+
+        .requirements-section {
+          margin-bottom: $spacing-md;
+
+          strong {
+            color: $poe-gold;
+            display: block;
+            margin-bottom: $spacing-sm;
+          }
+
+          ul {
+            margin: 0;
+            padding-left: $spacing-lg;
+            color: $poe-text-primary;
+
+            li {
+              margin-bottom: 4px;
+              font-size: $font-sm;
+            }
+          }
+        }
+
+        .notes-section {
+          margin-bottom: $spacing-md;
+
+          strong {
+            color: $poe-gold;
+            display: block;
+            margin-bottom: $spacing-sm;
+          }
+
+          p {
+            margin: 0;
+            color: $poe-text-secondary;
+            font-size: $font-sm;
+            font-style: italic;
+            line-height: 1.5;
+          }
+        }
+
+        .meta-info {
+          display: flex;
+          gap: $spacing-lg;
+          margin-bottom: $spacing-md;
+
+          .meta-item {
+            display: flex;
+            gap: $spacing-sm;
+            font-size: $font-sm;
+
+            .meta-label {
+              color: $poe-text-dim;
+            }
+
+            .meta-value {
+              font-weight: 600;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        .tags-section {
+          display: flex;
+          gap: 4px;
+          flex-wrap: wrap;
+
+          .tag {
+            background: rgba($poe-gold, 0.1);
+            color: $poe-gold;
+            padding: 2px 8px;
+            border-radius: $radius-sm;
+            font-size: $font-xs;
+            border: 1px solid rgba($poe-gold, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  .quick-reference {
+    border-top: 1px solid $border-secondary;
+    padding-top: $spacing-md;
+
+    h4 {
+      margin: 0 0 $spacing-sm 0;
+      color: $poe-gold;
+      font-size: $font-md;
+    }
+
+    .valuable-recipes {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .valuable-recipe-item {
+        background: $bg-secondary;
+        padding: $spacing-sm;
+        border-radius: $radius-sm;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: $transition-fast;
+        border: 1px solid transparent;
+
+        &:hover {
+          background: $bg-hover;
+          border-color: $poe-gold;
+        }
+
+        .recipe-name {
+          font-size: $font-sm;
+          color: $poe-text-primary;
+          font-weight: 600;
+        }
+
+        .recipe-result {
+          font-size: $font-xs;
+          color: $poe-text-secondary;
+        }
+      }
+    }
+  }
+
+  // Scrollbar styling
+  .recipes-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .recipes-list::-webkit-scrollbar-track {
+    background: $bg-secondary;
+    border-radius: $radius-sm;
+  }
+
+  .recipes-list::-webkit-scrollbar-thumb {
+    background: $poe-gold;
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: $accent-hover;
+    }
+  }
+}
+
+// Animations
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

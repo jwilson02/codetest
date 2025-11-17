@@ -1,0 +1,492 @@
+@import '../../styles/variables';
+
+.breach-helper {
+  background: $poe-panel-bg;
+  border: 2px solid $poe-panel-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  color: $poe-text-primary;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 600px;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: $shadow-xl;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $poe-panel-border;
+
+    h3 {
+      margin: 0;
+      font-size: $font-2xl;
+      color: $poe-gold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .header-info {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+
+      .league-tag {
+        padding: $spacing-xs $spacing-sm;
+        background: rgba(147, 51, 234, 0.3);
+        border: 1px solid #9333ea;
+        border-radius: $radius-sm;
+        font-size: $font-xs;
+        color: #c084fc;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: $poe-text-secondary;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 0;
+        width: 28px;
+        height: 28px;
+        line-height: 1;
+        transition: $transition-fast;
+
+        &:hover {
+          color: $danger;
+        }
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    border-bottom: 2px solid rgba(200, 170, 110, 0.2);
+
+    .tab {
+      padding: $spacing-sm $spacing-md;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: $poe-text-secondary;
+      cursor: pointer;
+      font-size: $font-md;
+      font-weight: 500;
+      transition: $transition-fast;
+      position: relative;
+      bottom: -2px;
+
+      &:hover {
+        color: $poe-text-primary;
+        background: $bg-hover;
+      }
+
+      &.active {
+        color: $poe-gold;
+        border-bottom-color: $poe-gold;
+      }
+    }
+  }
+
+  &__content {
+    .session-stats {
+      margin-bottom: $spacing-lg;
+
+      h4 {
+        margin: 0 0 $spacing-md 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: $spacing-md;
+
+        .stat-card {
+          display: flex;
+          flex-direction: column;
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            border-color: $poe-gold;
+            background: rgba(200, 170, 110, 0.1);
+          }
+
+          .stat-label {
+            font-size: $font-sm;
+            color: $poe-text-secondary;
+            margin-bottom: $spacing-xs;
+          }
+
+          .stat-value {
+            font-size: $font-xl;
+            font-weight: bold;
+            color: $poe-text-primary;
+
+            &.graftblood {
+              color: #4ade80;
+            }
+          }
+        }
+      }
+    }
+
+    .ailith-protection {
+      margin-bottom: $spacing-lg;
+      padding: $spacing-md;
+      background: rgba(147, 51, 234, 0.1);
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      border-radius: $radius-md;
+
+      h4 {
+        margin: 0 0 $spacing-md 0;
+        font-size: $font-lg;
+        color: #c084fc;
+      }
+
+      .protection-control {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+
+        .protection-toggle {
+          padding: $spacing-sm $spacing-lg;
+          background: rgba(147, 51, 234, 0.2);
+          border: 2px solid #9333ea;
+          border-radius: $radius-md;
+          color: #c084fc;
+          cursor: pointer;
+          font-weight: bold;
+          transition: $transition-normal;
+
+          &:hover {
+            background: rgba(147, 51, 234, 0.3);
+          }
+
+          &.active {
+            background: #9333ea;
+            color: white;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+          }
+        }
+
+        .protection-info {
+          .protection-type {
+            font-size: $font-md;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .breach-selector {
+      margin-bottom: $spacing-lg;
+
+      h4 {
+        margin: 0 0 $spacing-md 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .breach-buttons {
+        display: flex;
+        gap: $spacing-sm;
+        flex-wrap: wrap;
+
+        .breach-btn {
+          flex: 1;
+          min-width: 100px;
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 2px solid;
+          border-radius: $radius-md;
+          cursor: pointer;
+          transition: $transition-fast;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.05);
+          }
+
+          &.selected {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+          }
+
+          .breach-element {
+            font-weight: bold;
+            font-size: $font-md;
+          }
+        }
+      }
+    }
+
+    .breach-details {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(200, 170, 110, 0.2);
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+
+      .breach-header {
+        border-left: 4px solid;
+        padding-left: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        h4 {
+          margin: 0 0 $spacing-xs 0;
+          font-size: $font-xl;
+        }
+
+        .breach-boss {
+          font-size: $font-md;
+          color: $poe-text-secondary;
+        }
+      }
+
+      .breach-info-section {
+        margin-bottom: $spacing-lg;
+
+        h5 {
+          margin: 0 0 $spacing-sm 0;
+          font-size: $font-md;
+          color: $poe-gold;
+          text-transform: uppercase;
+        }
+
+        .strategy-list {
+          margin: 0;
+          padding-left: $spacing-lg;
+          color: $poe-text-secondary;
+
+          li {
+            margin-bottom: $spacing-xs;
+            line-height: 1.6;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      .breach-rewards {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+
+        .reward-item {
+          display: flex;
+          justify-content: space-between;
+          padding: $spacing-sm;
+          background: rgba(200, 170, 110, 0.05);
+          border-radius: $radius-sm;
+
+          .reward-label {
+            color: $poe-text-secondary;
+            font-size: $font-sm;
+          }
+
+          .reward-value {
+            color: $poe-gold;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .unstable-breach-timer {
+      margin-top: $spacing-lg;
+      padding: $spacing-md;
+      background: rgba(255, 69, 0, 0.2);
+      border: 2px solid #ff4500;
+      border-radius: $radius-md;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .timer-label {
+        color: #ff6347;
+        font-weight: bold;
+      }
+
+      .timer-value {
+        color: #fff;
+        font-size: $font-xl;
+        font-weight: bold;
+        animation: pulse 1s infinite;
+      }
+    }
+
+    .hives-section {
+      h4 {
+        margin: 0 0 $spacing-lg 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .hive-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        .hive-card {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-left: 4px solid;
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          &.completed {
+            opacity: 0.7;
+            background: rgba(76, 175, 80, 0.1);
+          }
+
+          .hive-info {
+            h5 {
+              margin: 0 0 $spacing-xs 0;
+              font-size: $font-md;
+            }
+
+            .hive-boss {
+              font-size: $font-sm;
+              color: $poe-text-secondary;
+            }
+          }
+
+          .hive-status {
+            .status-completed {
+              padding: $spacing-xs $spacing-md;
+              background: rgba(76, 175, 80, 0.3);
+              border: 1px solid $success;
+              border-radius: $radius-sm;
+              color: $success;
+              font-size: $font-sm;
+              font-weight: bold;
+            }
+
+            .status-pending {
+              padding: $spacing-xs $spacing-md;
+              background: rgba(255, 152, 0, 0.2);
+              border: 1px solid $warning;
+              border-radius: $radius-sm;
+              color: $warning;
+              font-size: $font-sm;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .splinters-section {
+      h4 {
+        margin: 0 0 $spacing-lg 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .splinter-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        .splinter-card {
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+
+          .splinter-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: $spacing-sm;
+
+            .splinter-name {
+              font-weight: bold;
+              font-size: $font-md;
+            }
+
+            .splinter-count {
+              color: $poe-text-secondary;
+              font-size: $font-sm;
+            }
+          }
+
+          .splinter-progress {
+            height: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: $radius-md;
+            overflow: hidden;
+            margin-bottom: $spacing-sm;
+
+            .progress-bar {
+              height: 100%;
+              transition: width 0.5s ease;
+              box-shadow: 0 0 10px currentColor;
+            }
+          }
+
+          .splinter-status {
+            text-align: center;
+            font-size: $font-sm;
+
+            .status-ready {
+              color: $success;
+              font-weight: bold;
+            }
+
+            .status-remaining {
+              color: $poe-text-secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  // Scrollbar styling
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: $radius-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(200, 170, 110, 0.3);
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: rgba(200, 170, 110, 0.5);
+    }
+  }
+}

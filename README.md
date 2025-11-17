@@ -1,4 +1,4 @@
-# Path of Exile Overlay - BETA v1.0.0
+# Path of Exile Overlay - v1.1.0 (Keepers of the Flame)
 
 <div align="center">
 
@@ -19,11 +19,24 @@ POE Overlay is a powerful desktop application that provides real-time **item pri
 
 ## ✨ Key Features
 
+### **🆕 v1.1.0 - Keepers of the Flame (POE 3.27) - 11 NEW FEATURES!**
+- 💜 **Breach Helper** - Track Ailith, Hives, Unstable Breaches, splinters
+- 🌳 **Genesis Tree** - 20 passives, Graftblood currency, 4 reward tiers
+- 🧬 **Grafts System** - 16 graft types, 2 slots, active skills
+- ⚔️ **Bloodline Ascendancy** - 10 secondary ascendancies with synergy calculator
+- 💬 **Trade Whisper Manager** - Auto-parse whispers, quick responses, async trading
+- 🏪 **Vendor Recipes** - 30+ recipes with profitability indicators
+- 🃏 **Divination Cards** - Track 22+ cards with farming locations
+- 🗺️ **Atlas Tracker** - Voidstones, Maven, 135 maps, 12 uber bosses
+- 🔨 **Crafting Helper** - Fossils, essences, harvest, eldritch crafting
+- 🎭 **Betrayal Board** - Syndicate optimization with profit strategies
+
+### **Core Features (v1.0.0)**
 - 🔍 **Item Price Checking** - Real-time prices from POE Trade API with confidence scoring
 - 📚 **Build Guides** - Integration with Maxroll.gg for class builds and skill setups
 - 💱 **Currency Exchange** - Live rates from POE.ninja with auto-refresh
 - 🗺️ **Map Mod Checker** - Dangerous mod warnings with build-specific analysis
-- ⌨️ **Global Hotkeys** - System-wide hotkeys that work even when POE is focused
+- ⌨️ **Global Hotkeys** - 18 system-wide hotkeys that work even when POE is focused
 - 🎨 **Professional UI** - Transparent overlay with draggable/resizable panels
 
 ## 📦 Quick Start
@@ -60,10 +73,12 @@ All hotkeys are customizable in settings!
 
 ## 📚 Documentation
 
+- **[Changelog v1.1.0](CHANGELOG_v1.1.0.md)** - ⭐ NEW: Complete changelog for Keepers of the Flame update
+- **[Features v1.1.0](FEATURES_v1.1.0.md)** - ⭐ NEW: Detailed guide for all 11 new features
 - **[User Guide](USER_GUIDE.md)** - Complete user documentation
 - **[Beta README](BETA_README.md)** - Technical details and architecture
 - **[Integration Guide](INTEGRATION_GUIDE.md)** - API integration documentation
-- **[Hotkeys Reference](HOTKEYS_REFERENCE.md)** - Complete hotkey guide
+- **[Hotkeys Reference](HOTKEYS_REFERENCE.md)** - Complete hotkey guide (18 total)
 - **[Bug Fixes](BUG_FIXES.md)** - List of fixes applied
 
 ## 🏗️ Project Structure
@@ -177,6 +192,38 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 ## 📋 Changelog
+
+### v1.1.0 (2025-11-17) - Keepers of the Flame Update
+
+**Major Feature Release - 11 NEW Features!**
+
+#### **Keepers of the Flame (POE 3.27) Features:**
+- ✨ Breach Helper - Track Ailith, Hives, Unstable Breaches, splinters
+- ✨ Genesis Tree Tracker - 20 passives, Graftblood, 4 reward tiers
+- ✨ Grafts System Planner - 16 graft types with active skills
+- ✨ Bloodline Ascendancy Planner - 10 secondary ascendancies
+
+#### **Trading & Economy Features:**
+- ✨ Trade Whisper Manager - Auto-parse, quick responses, async trading (3.27)
+- ✨ Vendor Recipe Database - 30+ recipes with profit indicators
+
+#### **Progression Tracking Features:**
+- ✨ Divination Card Tracker - 22+ cards with farming guides
+- ✨ Atlas Progression Tracker - Voidstones, Maven, 135 maps, 12 bosses
+
+#### **Crafting & Endgame Features:**
+- ✨ Crafting Helper - Fossils, essences, harvest, eldritch
+- ✨ Betrayal Board Assistant - Syndicate optimization
+
+#### **System Improvements:**
+- ✨ Added 10 new global hotkeys (18 total)
+- ✨ Updated for POE 3.27 league content
+- ✨ All new panels with POE-themed styling
+- ✨ LocalStorage persistence for all new features
+
+**See [CHANGELOG_v1.1.0.md](CHANGELOG_v1.1.0.md) for complete details.**
+
+---
 
 ### v1.0.0-beta (2025-11-17)
 

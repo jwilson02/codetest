@@ -1,0 +1,698 @@
+@import '../../styles/variables';
+
+.genesis-tree-tracker {
+  background: $poe-panel-bg;
+  border: 2px solid $poe-panel-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  color: $poe-text-primary;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 700px;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: $shadow-xl;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $poe-panel-border;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+
+      h3 {
+        margin: 0;
+        font-size: $font-2xl;
+        color: $poe-gold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .league-tag {
+        padding: $spacing-xs $spacing-sm;
+        background: rgba(147, 51, 234, 0.3);
+        border: 1px solid #9333ea;
+        border-radius: $radius-sm;
+        font-size: $font-xs;
+        color: #c084fc;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $poe-text-secondary;
+      font-size: 28px;
+      cursor: pointer;
+      padding: 0;
+      width: 28px;
+      height: 28px;
+      line-height: 1;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $danger;
+      }
+    }
+  }
+
+  .genesis-progress-bar {
+    margin-bottom: $spacing-lg;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(200, 170, 110, 0.2);
+    border-radius: $radius-md;
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacing-sm;
+
+      .progress-label {
+        font-size: $font-md;
+        color: $poe-text-secondary;
+      }
+
+      .progress-value {
+        font-size: $font-md;
+        color: $poe-gold;
+        font-weight: bold;
+      }
+    }
+
+    .progress-track {
+      height: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: $radius-md;
+      overflow: hidden;
+      margin-bottom: $spacing-md;
+      border: 1px solid rgba(200, 170, 110, 0.3);
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #9333ea, #c084fc);
+        transition: width 0.5s ease;
+        box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+      }
+    }
+
+    .graftblood-display {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      padding: $spacing-sm;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: $radius-md;
+
+      .graftblood-icon {
+        font-size: $font-xl;
+      }
+
+      .graftblood-amount {
+        font-size: $font-xl;
+        font-weight: bold;
+        color: #4ade80;
+      }
+
+      .graftblood-label {
+        font-size: $font-sm;
+        color: $poe-text-secondary;
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    border-bottom: 2px solid rgba(200, 170, 110, 0.2);
+
+    .tab {
+      padding: $spacing-sm $spacing-md;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: $poe-text-secondary;
+      cursor: pointer;
+      font-size: $font-md;
+      font-weight: 500;
+      transition: $transition-fast;
+      position: relative;
+      bottom: -2px;
+
+      &:hover {
+        color: $poe-text-primary;
+        background: $bg-hover;
+      }
+
+      &.active {
+        color: $poe-gold;
+        border-bottom-color: $poe-gold;
+      }
+    }
+  }
+
+  &__content {
+    .progress-section {
+      .stats-overview {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        .stat-card {
+          display: flex;
+          flex-direction: column;
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            border-color: $poe-gold;
+            background: rgba(200, 170, 110, 0.1);
+          }
+
+          .stat-label {
+            font-size: $font-sm;
+            color: $poe-text-secondary;
+            margin-bottom: $spacing-xs;
+          }
+
+          .stat-value {
+            font-size: $font-xl;
+            font-weight: bold;
+            color: $poe-text-primary;
+
+            &.tier {
+              text-transform: uppercase;
+            }
+
+            &.graftblood {
+              color: #4ade80;
+            }
+
+            &.spent {
+              color: #ff6b9d;
+            }
+
+            &.uniques {
+              color: #ffd700;
+            }
+          }
+        }
+      }
+
+      .graftblood-input-section {
+        margin-bottom: $spacing-lg;
+        padding: $spacing-md;
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        border-radius: $radius-md;
+
+        h4 {
+          margin: 0 0 $spacing-md 0;
+          font-size: $font-lg;
+          color: #4ade80;
+        }
+
+        .input-group {
+          display: flex;
+          gap: $spacing-sm;
+
+          input {
+            flex: 1;
+            padding: $spacing-sm $spacing-md;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: $radius-md;
+            color: $poe-text-primary;
+            font-size: $font-md;
+
+            &:focus {
+              outline: none;
+              border-color: #4ade80;
+            }
+          }
+
+          .add-btn {
+            padding: $spacing-sm $spacing-lg;
+            background: #4ade80;
+            border: none;
+            border-radius: $radius-md;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: $transition-fast;
+
+            &:hover {
+              background: #22c55e;
+            }
+          }
+        }
+      }
+
+      .crafts-preview {
+        margin-bottom: $spacing-lg;
+
+        h4 {
+          margin: 0 0 $spacing-md 0;
+          font-size: $font-lg;
+          color: $poe-gold;
+        }
+
+        .crafts-list {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-sm;
+
+          .craft-item {
+            display: flex;
+            justify-content: space-between;
+            padding: $spacing-sm $spacing-md;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(200, 170, 110, 0.2);
+            border-radius: $radius-md;
+
+            .craft-name {
+              color: $poe-text-primary;
+              font-weight: 500;
+            }
+
+            .craft-cost {
+              color: #4ade80;
+            }
+          }
+        }
+
+        .no-crafts {
+          color: $poe-text-secondary;
+          font-style: italic;
+          padding: $spacing-md;
+          text-align: center;
+        }
+      }
+
+      .tier-info {
+        h4 {
+          margin: 0 0 $spacing-md 0;
+          font-size: $font-lg;
+          color: $poe-gold;
+        }
+
+        .tiers-list {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: $spacing-sm;
+
+          .tier-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: $spacing-md;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(200, 170, 110, 0.2);
+            border-radius: $radius-md;
+            transition: $transition-fast;
+
+            &.completed {
+              background: rgba(76, 175, 80, 0.2);
+              border-color: $success;
+            }
+
+            .tier-number {
+              font-weight: bold;
+              margin-bottom: $spacing-xs;
+            }
+
+            .tier-status {
+              font-size: $font-lg;
+
+              &.completed {
+                color: $success;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .nodes-section {
+      .node-filters {
+        display: flex;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-lg;
+        flex-wrap: wrap;
+
+        .filter-btn {
+          padding: $spacing-xs $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+          color: $poe-text-secondary;
+          cursor: pointer;
+          transition: $transition-fast;
+
+          &:hover {
+            background: rgba(200, 170, 110, 0.1);
+          }
+
+          &.active {
+            background: rgba(200, 170, 110, 0.2);
+            border-color: $poe-gold;
+            color: $poe-text-primary;
+          }
+        }
+      }
+
+      .nodes-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: $spacing-md;
+
+        .node-card {
+          padding: $spacing-md;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-left: 4px solid;
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          &.unlocked {
+            opacity: 0.7;
+            background: rgba(76, 175, 80, 0.1);
+          }
+
+          &.available {
+            border-color: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+          }
+
+          .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: $spacing-sm;
+
+            h5 {
+              margin: 0;
+              font-size: $font-md;
+            }
+
+            .node-tier {
+              font-size: $font-xs;
+              font-weight: bold;
+              padding: 2px 6px;
+              background: rgba(0, 0, 0, 0.5);
+              border-radius: $radius-sm;
+            }
+          }
+
+          .node-description {
+            margin: 0 0 $spacing-md 0;
+            font-size: $font-sm;
+            color: $poe-text-secondary;
+            line-height: 1.5;
+          }
+
+          .node-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .node-cost {
+              color: #4ade80;
+              font-weight: bold;
+            }
+
+            .unlock-btn {
+              padding: $spacing-xs $spacing-md;
+              background: #4ade80;
+              border: none;
+              border-radius: $radius-md;
+              color: #000;
+              font-weight: bold;
+              cursor: pointer;
+              transition: $transition-fast;
+
+              &:hover:not(:disabled) {
+                background: #22c55e;
+              }
+
+              &:disabled {
+                background: rgba(200, 170, 110, 0.2);
+                color: $poe-text-dim;
+                cursor: not-allowed;
+              }
+            }
+
+            .unlocked-badge {
+              padding: $spacing-xs $spacing-sm;
+              background: rgba(76, 175, 80, 0.3);
+              border: 1px solid $success;
+              border-radius: $radius-sm;
+              color: $success;
+              font-size: $font-xs;
+              font-weight: bold;
+            }
+          }
+
+          .node-requirement {
+            margin-top: $spacing-sm;
+            padding-top: $spacing-sm;
+            border-top: 1px solid rgba(200, 170, 110, 0.2);
+            font-size: $font-xs;
+            color: $warning;
+            font-style: italic;
+          }
+        }
+      }
+    }
+
+    .paths-section {
+      h4 {
+        margin: 0 0 $spacing-lg 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .paths-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        .path-card {
+          padding: $spacing-lg;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            border-color: $poe-gold;
+            background: rgba(200, 170, 110, 0.05);
+          }
+
+          h5 {
+            margin: 0 0 $spacing-sm 0;
+            font-size: $font-lg;
+            color: $poe-gold;
+          }
+
+          .path-description {
+            margin: 0 0 $spacing-md 0;
+            color: $poe-text-secondary;
+          }
+
+          .path-nodes {
+            margin-bottom: $spacing-md;
+            padding: $spacing-md;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: $radius-md;
+
+            .path-label {
+              display: block;
+              margin-bottom: $spacing-sm;
+              font-size: $font-sm;
+              color: $poe-text-secondary;
+              font-weight: bold;
+            }
+
+            .node-sequence {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: $spacing-xs;
+
+              .path-node {
+                font-size: $font-sm;
+                color: $poe-text-primary;
+
+                .arrow {
+                  margin: 0 $spacing-xs;
+                  color: $poe-gold;
+                }
+              }
+            }
+          }
+
+          .path-benefits {
+            display: flex;
+            gap: $spacing-sm;
+            padding: $spacing-sm $spacing-md;
+            background: rgba(74, 222, 128, 0.1);
+            border-left: 3px solid #4ade80;
+            border-radius: $radius-sm;
+
+            .benefits-label {
+              font-size: $font-sm;
+              color: #4ade80;
+              font-weight: bold;
+            }
+
+            .benefits-text {
+              font-size: $font-sm;
+              color: $poe-text-secondary;
+            }
+          }
+        }
+      }
+    }
+
+    .crafts-section {
+      h4 {
+        margin: 0 0 $spacing-lg 0;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .crafts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        .craft-card {
+          padding: $spacing-lg;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(200, 170, 110, 0.2);
+          border-radius: $radius-md;
+          transition: $transition-fast;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          &.unlocked {
+            border-color: #4ade80;
+            background: rgba(74, 222, 128, 0.1);
+          }
+
+          &.locked {
+            opacity: 0.6;
+          }
+
+          h5 {
+            margin: 0 0 $spacing-sm 0;
+            font-size: $font-md;
+            color: $poe-gold;
+          }
+
+          .craft-description {
+            margin: 0 0 $spacing-md 0;
+            font-size: $font-sm;
+            color: $poe-text-secondary;
+            line-height: 1.5;
+          }
+
+          .craft-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .craft-cost {
+              color: #4ade80;
+              font-weight: bold;
+            }
+
+            .craft-status {
+              padding: $spacing-xs $spacing-sm;
+              border-radius: $radius-sm;
+              font-size: $font-xs;
+              font-weight: bold;
+
+              &.unlocked {
+                background: rgba(76, 175, 80, 0.3);
+                border: 1px solid $success;
+                color: $success;
+              }
+
+              &.locked {
+                background: rgba(200, 170, 110, 0.2);
+                border: 1px solid $poe-text-dim;
+                color: $poe-text-dim;
+              }
+            }
+          }
+        }
+      }
+
+      .craft-unlock-info {
+        padding: $spacing-md;
+        background: rgba(200, 170, 110, 0.1);
+        border: 1px solid rgba(200, 170, 110, 0.3);
+        border-radius: $radius-md;
+
+        p {
+          margin: 0 0 $spacing-sm 0;
+          font-size: $font-sm;
+          color: $poe-text-secondary;
+        }
+
+        ul {
+          margin: 0;
+          padding-left: $spacing-lg;
+
+          li {
+            margin-bottom: $spacing-xs;
+            color: $poe-text-secondary;
+            font-size: $font-sm;
+          }
+        }
+      }
+    }
+  }
+
+  // Scrollbar styling
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: $radius-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(200, 170, 110, 0.3);
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: rgba(200, 170, 110, 0.5);
+    }
+  }
+}

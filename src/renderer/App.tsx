@@ -40,6 +40,7 @@ const AppContent: React.FC = () => {
 
         // Handle different hotkeys
         switch (hotkeyName) {
+          // ORIGINAL FEATURES
           case 'price-check':
             togglePanel('price');
             // Also trigger clipboard read and price check
@@ -61,6 +62,45 @@ const AppContent: React.FC = () => {
             // Already handled by main process visibility toggle
             window.logger?.info('Overlay visibility toggled');
             break;
+
+          // KEEPERS OF THE FLAME (3.27) FEATURES
+          case 'genesis-tree':
+            togglePanel('genesisTree');
+            break;
+          case 'breach-helper':
+            togglePanel('breachHelper');
+            break;
+          case 'bloodline-ascendancy':
+            togglePanel('bloodline');
+            break;
+          case 'grafts-planner':
+            togglePanel('grafts');
+            break;
+
+          // TRADING & ECONOMY FEATURES
+          case 'trade-whisper':
+            togglePanel('tradeWhisper');
+            break;
+          case 'vendor-recipes':
+            togglePanel('vendorRecipe');
+            break;
+
+          // PROGRESSION TRACKING FEATURES
+          case 'divination-cards':
+            togglePanel('divinationCards');
+            break;
+          case 'atlas-tracker':
+            togglePanel('atlasTracker');
+            break;
+
+          // CRAFTING & ENDGAME FEATURES
+          case 'crafting-helper':
+            togglePanel('crafting');
+            break;
+          case 'betrayal-board':
+            togglePanel('betrayal');
+            break;
+
           default:
             window.logger?.warn('Unknown hotkey:', hotkeyName);
         }

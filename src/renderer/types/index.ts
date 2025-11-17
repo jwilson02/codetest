@@ -72,4 +72,6 @@ export type PanelType =
   | 'price'
   | 'build'
   | 'settings'
-  | 'hotkeys';
+  | 'hotkeys'
+  | 'grafts'
+  | 'bloodline';

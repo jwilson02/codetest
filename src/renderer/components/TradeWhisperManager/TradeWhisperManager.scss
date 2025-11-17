@@ -1,0 +1,513 @@
+@import '../../styles/variables';
+
+.trade-whisper-manager {
+  background: $bg-panel;
+  border: 1px solid $border-primary;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  color: $poe-text-primary;
+  max-height: 800px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-lg;
+
+  .trade-whisper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-secondary;
+
+    h3 {
+      margin: 0;
+      color: $poe-gold;
+      font-size: $font-xl;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $poe-text-secondary;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $poe-text-primary;
+        background: $bg-hover;
+        border-radius: $radius-sm;
+      }
+    }
+  }
+
+  .statistics-bar {
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm;
+    background: $bg-secondary;
+    border-radius: $radius-md;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      .stat-label {
+        font-size: $font-xs;
+        color: $poe-text-secondary;
+        margin-bottom: 4px;
+      }
+
+      .stat-value {
+        font-size: $font-lg;
+        font-weight: 600;
+        color: $poe-gold;
+      }
+    }
+  }
+
+  .whisper-input-section {
+    margin-bottom: $spacing-md;
+
+    .whisper-input {
+      width: 100%;
+      background: $bg-secondary;
+      border: 1px solid $border-secondary;
+      border-radius: $radius-md;
+      padding: $spacing-sm;
+      color: $poe-text-primary;
+      font-family: inherit;
+      font-size: $font-sm;
+      resize: vertical;
+      margin-bottom: $spacing-sm;
+
+      &:focus {
+        outline: none;
+        border-color: $poe-gold;
+      }
+
+      &::placeholder {
+        color: $poe-text-dim;
+      }
+    }
+
+    .add-whisper-btn {
+      width: 100%;
+      background: $poe-gold;
+      color: $poe-dark-bg;
+      border: none;
+      border-radius: $radius-md;
+      padding: $spacing-sm;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover {
+        background: $accent-hover;
+      }
+
+      &:active {
+        background: $accent-active;
+      }
+    }
+  }
+
+  .tabs {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    border-bottom: 1px solid $border-secondary;
+
+    .tab {
+      background: none;
+      border: none;
+      color: $poe-text-secondary;
+      padding: $spacing-sm $spacing-md;
+      cursor: pointer;
+      font-size: $font-md;
+      border-bottom: 2px solid transparent;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $poe-text-primary;
+      }
+
+      &.active {
+        color: $poe-gold;
+        border-bottom-color: $poe-gold;
+      }
+    }
+  }
+
+  .trades-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: $spacing-md;
+    max-height: 400px;
+
+    .empty-state {
+      text-align: center;
+      padding: $spacing-xl;
+      color: $poe-text-dim;
+      font-style: italic;
+    }
+
+    .clear-history-btn {
+      width: 100%;
+      margin-top: $spacing-md;
+      background: $bg-secondary;
+      color: $danger;
+      border: 1px solid $danger;
+      border-radius: $radius-md;
+      padding: $spacing-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover {
+        background: rgba($danger, 0.1);
+      }
+    }
+  }
+
+  .trade-item {
+    background: $bg-secondary;
+    border: 1px solid $border-secondary;
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-sm;
+    transition: $transition-fast;
+
+    &.pending {
+      border-left: 3px solid $info;
+    }
+
+    &.completed {
+      border-left: 3px solid $success;
+      opacity: 0.7;
+    }
+
+    &.cancelled {
+      border-left: 3px solid $danger;
+      opacity: 0.7;
+    }
+
+    &.asynchronous {
+      .async-badge {
+        background: $warning;
+        color: $poe-dark-bg;
+        padding: 2px 6px;
+        border-radius: $radius-sm;
+        font-size: $font-xs;
+        font-weight: 600;
+        margin-left: $spacing-sm;
+      }
+    }
+
+    .trade-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-sm;
+
+      .trade-info {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+
+        .player-name {
+          font-weight: 600;
+          color: $poe-gold;
+          font-size: $font-md;
+        }
+
+        .trade-time {
+          font-size: $font-xs;
+          color: $poe-text-dim;
+        }
+      }
+
+      .remove-btn {
+        background: none;
+        border: none;
+        color: $poe-text-dim;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        transition: $transition-fast;
+
+        &:hover {
+          color: $danger;
+        }
+      }
+    }
+
+    .trade-details {
+      margin-bottom: $spacing-sm;
+
+      .bulk-trade {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .want, .offer {
+          font-size: $font-sm;
+          color: $poe-text-primary;
+        }
+      }
+
+      .item-name {
+        font-size: $font-md;
+        color: $rarity-rare;
+        margin-bottom: 4px;
+      }
+
+      .price {
+        font-size: $font-sm;
+        color: $poe-text-primary;
+        font-weight: 600;
+      }
+
+      .stash-location {
+        font-size: $font-xs;
+        color: $poe-text-dim;
+        margin-top: 4px;
+        font-style: italic;
+      }
+    }
+
+    .trade-actions {
+      .quick-responses {
+        display: flex;
+        gap: 4px;
+        margin-bottom: $spacing-sm;
+        flex-wrap: wrap;
+
+        .response-btn {
+          background: $bg-primary;
+          border: 1px solid $border-secondary;
+          color: $poe-text-primary;
+          padding: 4px 8px;
+          border-radius: $radius-sm;
+          font-size: $font-xs;
+          cursor: pointer;
+          transition: $transition-fast;
+
+          &:hover {
+            background: $bg-hover;
+            border-color: $poe-gold;
+          }
+
+          &.copied {
+            background: $success;
+            color: white;
+            border-color: $success;
+          }
+        }
+      }
+
+      .status-actions {
+        display: flex;
+        gap: $spacing-sm;
+
+        button {
+          flex: 1;
+          padding: $spacing-sm;
+          border-radius: $radius-md;
+          border: none;
+          cursor: pointer;
+          font-weight: 600;
+          transition: $transition-fast;
+        }
+
+        .complete-btn {
+          background: $success;
+          color: white;
+
+          &:hover {
+            background: darken($success, 10%);
+          }
+        }
+
+        .cancel-btn {
+          background: $danger;
+          color: white;
+
+          &:hover {
+            background: darken($danger, 10%);
+          }
+        }
+      }
+    }
+
+    .trade-status-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: $spacing-sm;
+      padding-top: $spacing-sm;
+      border-top: 1px solid $border-secondary;
+
+      .status-badge {
+        font-size: $font-xs;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: $radius-sm;
+
+        &.completed {
+          background: rgba($success, 0.2);
+          color: $success;
+        }
+
+        &.cancelled {
+          background: rgba($danger, 0.2);
+          color: $danger;
+        }
+      }
+
+      .duration {
+        font-size: $font-xs;
+        color: $poe-text-dim;
+      }
+    }
+  }
+
+  .templates-section {
+    border-top: 1px solid $border-secondary;
+    padding-top: $spacing-md;
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-sm;
+
+      h4 {
+        margin: 0;
+        color: $poe-gold;
+        font-size: $font-md;
+      }
+
+      .add-template-btn {
+        background: $poe-gold;
+        color: $poe-dark-bg;
+        border: none;
+        border-radius: $radius-sm;
+        padding: 4px 12px;
+        font-size: $font-sm;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition-fast;
+
+        &:hover {
+          background: $accent-hover;
+        }
+      }
+    }
+
+    .template-editor {
+      background: $bg-secondary;
+      padding: $spacing-sm;
+      border-radius: $radius-md;
+      margin-bottom: $spacing-sm;
+      display: flex;
+      gap: $spacing-sm;
+      flex-direction: column;
+
+      input {
+        background: $bg-primary;
+        border: 1px solid $border-secondary;
+        color: $poe-text-primary;
+        padding: $spacing-sm;
+        border-radius: $radius-sm;
+        font-size: $font-sm;
+
+        &:focus {
+          outline: none;
+          border-color: $poe-gold;
+        }
+      }
+
+      button {
+        background: $poe-gold;
+        color: $poe-dark-bg;
+        border: none;
+        border-radius: $radius-sm;
+        padding: $spacing-sm;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition-fast;
+
+        &:hover {
+          background: $accent-hover;
+        }
+      }
+    }
+
+    .templates-list {
+      max-height: 150px;
+      overflow-y: auto;
+
+      .template-item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-sm;
+        background: $bg-secondary;
+        border-radius: $radius-sm;
+        margin-bottom: 4px;
+        font-size: $font-sm;
+
+        .template-name {
+          color: $poe-text-secondary;
+          min-width: 100px;
+        }
+
+        .template-message {
+          color: $poe-text-primary;
+          flex: 1;
+        }
+
+        .template-shortcut {
+          color: $poe-gold;
+          font-weight: 600;
+          min-width: 30px;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  // Scrollbar styling
+  .trades-list::-webkit-scrollbar,
+  .templates-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .trades-list::-webkit-scrollbar-track,
+  .templates-list::-webkit-scrollbar-track {
+    background: $bg-secondary;
+    border-radius: $radius-sm;
+  }
+
+  .trades-list::-webkit-scrollbar-thumb,
+  .templates-list::-webkit-scrollbar-thumb {
+    background: $poe-gold;
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: $accent-hover;
+    }
+  }
+}

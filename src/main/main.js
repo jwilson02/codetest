@@ -184,7 +184,95 @@ function registerShortcuts() {
     app.quit();
   });
 
-  log.info('Global shortcuts registered');
+  // NEW 3.27 KEEPERS OF THE FLAME FEATURES
+
+  // Genesis Tree (Ctrl+Shift+G)
+  globalShortcut.register('CommandOrControl+Shift+G', () => {
+    log.info('Genesis Tree shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'genesis-tree');
+    }
+  });
+
+  // Breach Helper (Ctrl+Shift+U)
+  globalShortcut.register('CommandOrControl+Shift+U', () => {
+    log.info('Breach Helper shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'breach-helper');
+    }
+  });
+
+  // Bloodline Ascendancy (Ctrl+Shift+A)
+  globalShortcut.register('CommandOrControl+Shift+A', () => {
+    log.info('Bloodline Ascendancy shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'bloodline-ascendancy');
+    }
+  });
+
+  // Grafts Planner (Ctrl+Shift+Alt+G) - Using Alt modifier to avoid conflict
+  globalShortcut.register('CommandOrControl+Shift+Alt+G', () => {
+    log.info('Grafts Planner shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'grafts-planner');
+    }
+  });
+
+  // TRADING & ECONOMY FEATURES
+
+  // Trade Whisper Manager (Ctrl+Shift+W)
+  globalShortcut.register('CommandOrControl+Shift+W', () => {
+    log.info('Trade Whisper Manager shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'trade-whisper');
+    }
+  });
+
+  // Vendor Recipes (Ctrl+Shift+V)
+  globalShortcut.register('CommandOrControl+Shift+V', () => {
+    log.info('Vendor Recipes shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'vendor-recipes');
+    }
+  });
+
+  // PROGRESSION TRACKING FEATURES
+
+  // Divination Cards (Ctrl+Shift+D)
+  globalShortcut.register('CommandOrControl+Shift+D', () => {
+    log.info('Divination Cards shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'divination-cards');
+    }
+  });
+
+  // Atlas Tracker (Ctrl+Shift+L)
+  globalShortcut.register('CommandOrControl+Shift+L', () => {
+    log.info('Atlas Tracker shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'atlas-tracker');
+    }
+  });
+
+  // CRAFTING & ENDGAME FEATURES
+
+  // Crafting Helper (Ctrl+Shift+F)
+  globalShortcut.register('CommandOrControl+Shift+F', () => {
+    log.info('Crafting Helper shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'crafting-helper');
+    }
+  });
+
+  // Betrayal Board (Ctrl+Shift+Y)
+  globalShortcut.register('CommandOrControl+Shift+Y', () => {
+    log.info('Betrayal Board shortcut pressed');
+    if (mainWindow) {
+      mainWindow.webContents.send('hotkey-pressed', 'betrayal-board');
+    }
+  });
+
+  log.info('Global shortcuts registered (18 total hotkeys)');
 }
 
 /**

@@ -1,0 +1,427 @@
+@import '../../styles/variables';
+
+.crafting-helper {
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid $poe-gold;
+  border-radius: 8px;
+  padding: 16px;
+  color: $poe-text-primary;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 700px;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid $poe-gold;
+
+    h3 {
+      margin: 0;
+      font-size: $font-xl;
+      color: $poe-gold;
+      text-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $poe-text-primary;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      line-height: 1;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $danger;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    input {
+      flex: 1;
+      padding: 10px 12px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid $poe-panel-border;
+      border-radius: 4px;
+      color: $poe-text-primary;
+      font-size: $font-sm;
+
+      &:focus {
+        outline: none;
+        border-color: $poe-gold;
+        box-shadow: 0 0 8px rgba(200, 170, 110, 0.3);
+      }
+
+      &::placeholder {
+        color: $poe-text-dim;
+      }
+    }
+
+    button {
+      padding: 8px 16px;
+      border: 1px solid $poe-panel-border;
+      border-radius: 4px;
+      font-size: $font-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &.search-btn {
+        background: $poe-gold;
+        color: #000;
+        border-color: $poe-gold;
+        font-weight: bold;
+
+        &:hover {
+          background: $accent-hover;
+          box-shadow: 0 0 10px rgba(200, 170, 110, 0.4);
+        }
+      }
+
+      &.clear-btn {
+        background: rgba(211, 47, 47, 0.2);
+        color: $danger;
+        border-color: $danger;
+
+        &:hover {
+          background: rgba(211, 47, 47, 0.3);
+        }
+      }
+    }
+  }
+
+  .search-summary {
+    padding: 8px 12px;
+    background: rgba(200, 170, 110, 0.1);
+    border: 1px solid $poe-panel-border;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: $font-sm;
+    color: $poe-gold;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $poe-panel-border;
+
+    .tab {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-top: 2px solid transparent;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      color: $poe-text-secondary;
+      font-size: $font-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+      position: relative;
+      top: 1px;
+
+      &:hover {
+        background: rgba(200, 170, 110, 0.1);
+        color: $poe-text-primary;
+      }
+
+      &.active {
+        background: rgba(200, 170, 110, 0.2);
+        border-top-color: $poe-gold;
+        border-left-color: $poe-panel-border;
+        border-right-color: $poe-panel-border;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.95);
+        color: $poe-gold;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__content {
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $poe-gold;
+      border-radius: 4px;
+
+      &:hover {
+        background: $accent-hover;
+      }
+    }
+  }
+
+  .crafting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .crafting-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid $poe-panel-border;
+    border-left: 4px solid;
+    border-radius: 4px;
+    padding: 12px;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: $poe-gold;
+      box-shadow: 0 0 12px rgba(200, 170, 110, 0.2);
+    }
+
+    &.fossil {
+      border-left-color: #8b7355;
+    }
+
+    &.essence {
+      border-left-color: #aa9e82;
+    }
+
+    &.harvest {
+      border-left-color: #7c5cff;
+    }
+
+    &.eldritch {
+      border-left-color: #ff6b6b;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .item-name {
+        font-weight: bold;
+        font-size: $font-md;
+        color: $poe-gold;
+      }
+
+      .item-cost {
+        font-size: $font-sm;
+        color: $rarity-currency;
+        background: rgba(170, 158, 130, 0.2);
+        padding: 2px 8px;
+        border-radius: 3px;
+      }
+
+      .item-value {
+        font-size: $font-xs;
+        font-weight: bold;
+        padding: 2px 8px;
+        border-radius: 3px;
+
+        &.value-very-high {
+          background: rgba(76, 175, 80, 0.3);
+          color: $success;
+        }
+
+        &.value-high {
+          background: rgba(33, 150, 243, 0.3);
+          color: $info;
+        }
+
+        &.value-extreme {
+          background: rgba(255, 23, 68, 0.3);
+          color: #ff1744;
+        }
+
+        &.value-medium {
+          background: rgba(255, 152, 0, 0.3);
+          color: $warning;
+        }
+      }
+    }
+
+    .item-category {
+      font-size: $font-xs;
+      color: $poe-text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .item-influence {
+      font-size: $font-xs;
+      color: #ff6b6b;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .item-detail {
+      font-size: $font-sm;
+      margin-bottom: 6px;
+      line-height: 1.5;
+
+      strong {
+        color: $poe-gold;
+        margin-right: 4px;
+      }
+
+      &.blocking {
+        color: $danger;
+
+        strong {
+          color: $danger;
+        }
+      }
+
+      &.best-for {
+        color: $success;
+
+        strong {
+          color: $success;
+        }
+      }
+
+      &.strategy {
+        color: $info;
+        font-style: italic;
+
+        strong {
+          color: $info;
+        }
+      }
+    }
+  }
+
+  .strategies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .strategy-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid $poe-panel-border;
+    border-left: 4px solid $poe-gold;
+    border-radius: 4px;
+    padding: 16px;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 15px rgba(200, 170, 110, 0.3);
+    }
+
+    .strategy-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $poe-panel-border;
+
+      .strategy-name {
+        font-weight: bold;
+        font-size: $font-lg;
+        color: $poe-gold;
+      }
+
+      .strategy-meta {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        .strategy-cost {
+          color: $rarity-currency;
+          font-weight: bold;
+          font-size: $font-sm;
+        }
+
+        .strategy-difficulty {
+          font-size: $font-xs;
+          font-weight: bold;
+          padding: 4px 8px;
+          border-radius: 3px;
+          text-transform: uppercase;
+
+          &.easy {
+            background: rgba(76, 175, 80, 0.3);
+            color: $success;
+          }
+
+          &.medium {
+            background: rgba(255, 152, 0, 0.3);
+            color: $warning;
+          }
+
+          &.hard {
+            background: rgba(211, 47, 47, 0.3);
+            color: $danger;
+          }
+        }
+      }
+    }
+
+    .strategy-steps {
+      strong {
+        display: block;
+        margin-bottom: 8px;
+        color: $poe-gold;
+        font-size: $font-sm;
+      }
+
+      .strategy-step {
+        padding: 6px 0;
+        padding-left: 12px;
+        font-size: $font-sm;
+        line-height: 1.6;
+        color: $poe-text-primary;
+        border-left: 2px solid rgba(200, 170, 110, 0.3);
+        margin-bottom: 4px;
+
+        &:hover {
+          border-left-color: $poe-gold;
+          color: $poe-gold;
+        }
+      }
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: $poe-text-dim;
+    font-size: $font-md;
+  }
+
+  &__info {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid $poe-panel-border;
+
+    .info-text {
+      font-size: $font-sm;
+      color: $poe-text-secondary;
+      font-style: italic;
+      line-height: 1.5;
+    }
+  }
+}

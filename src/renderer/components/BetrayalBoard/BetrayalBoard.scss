@@ -1,0 +1,557 @@
+@import '../../styles/variables';
+
+.betrayal-board {
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #2e7d32;
+  border-radius: 8px;
+  padding: 16px;
+  color: $poe-text-primary;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 700px;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #2e7d32;
+
+    h3 {
+      margin: 0;
+      font-size: $font-xl;
+      color: #4caf50;
+      text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $poe-text-primary;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      line-height: 1;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $danger;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(46, 125, 50, 0.3);
+
+    .tab {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-top: 2px solid transparent;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      color: $poe-text-secondary;
+      font-size: $font-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+      position: relative;
+      top: 1px;
+
+      &:hover {
+        background: rgba(76, 175, 80, 0.1);
+        color: $poe-text-primary;
+      }
+
+      &.active {
+        background: rgba(76, 175, 80, 0.2);
+        border-top-color: #4caf50;
+        border-left-color: rgba(46, 125, 50, 0.3);
+        border-right-color: rgba(46, 125, 50, 0.3);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.95);
+        color: #4caf50;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__content {
+    min-height: 400px;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #4caf50;
+      border-radius: 4px;
+
+      &:hover {
+        background: #66bb6a;
+      }
+    }
+  }
+
+  .board-tracker,
+  .rewards-guide,
+  .cheatsheet,
+  .mechanics-guide {
+    .tracker-info,
+    .rewards-info,
+    .cheatsheet-info,
+    .mechanics-info {
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 16px;
+
+      p {
+        margin: 0;
+        font-size: $font-sm;
+        line-height: 1.5;
+      }
+    }
+
+    .board-tip {
+      margin-top: 8px;
+      padding: 8px;
+      background: rgba(255, 193, 7, 0.1);
+      border-left: 3px solid $warning;
+      font-size: $font-sm;
+      color: $warning;
+    }
+  }
+
+  .division-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .division-btn {
+      flex: 1;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 4px;
+      color: $poe-text-secondary;
+      font-size: $font-sm;
+      font-weight: bold;
+      cursor: pointer;
+      transition: $transition-fast;
+      text-transform: capitalize;
+
+      &:hover {
+        background: rgba(76, 175, 80, 0.1);
+        border-color: #4caf50;
+      }
+
+      &.active {
+        background: rgba(76, 175, 80, 0.2);
+        border-color: #4caf50;
+        color: #4caf50;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+      }
+    }
+  }
+
+  .division-board {
+    h4 {
+      margin: 0 0 12px 0;
+      font-size: $font-lg;
+      color: #4caf50;
+      text-transform: capitalize;
+    }
+
+    .section-header {
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: $poe-gold;
+      font-size: $font-md;
+    }
+  }
+
+  .best-members {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .member-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-left: 4px solid #4caf50;
+    border-radius: 4px;
+    padding: 12px;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .member-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .member-name {
+        font-weight: bold;
+        font-size: $font-md;
+        color: $poe-text-primary;
+      }
+
+      .member-priority {
+        font-size: $font-xs;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 3px;
+        color: #fff;
+      }
+    }
+
+    .member-reward {
+      font-size: $font-sm;
+      margin-bottom: 6px;
+
+      strong {
+        color: #4caf50;
+      }
+    }
+
+    .member-value {
+      font-size: $font-sm;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .member-notes {
+      font-size: $font-sm;
+      color: $poe-text-secondary;
+      font-style: italic;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(76, 175, 80, 0.2);
+    }
+  }
+
+  .rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .division-rewards {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 4px;
+    padding: 12px;
+
+    .division-title {
+      margin: 0 0 12px 0;
+      font-size: $font-md;
+      color: #4caf50;
+      text-transform: capitalize;
+      border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+      padding-bottom: 8px;
+    }
+
+    .reward-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .reward-card {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 4px;
+      border-left: 3px solid #4caf50;
+      transition: $transition-fast;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .reward-member {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+        font-weight: bold;
+        font-size: $font-sm;
+
+        .priority-badge {
+          font-size: 10px;
+          padding: 2px 6px;
+          border-radius: 2px;
+          color: #fff;
+        }
+      }
+
+      .reward-text {
+        font-size: $font-xs;
+        color: $poe-text-secondary;
+        margin-bottom: 4px;
+      }
+
+      .reward-value {
+        font-size: $font-xs;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .priority-legend {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 16px;
+
+    .legend-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #4caf50;
+      font-size: $font-sm;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      .legend-item {
+        font-size: $font-xs;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .member-cheat-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 4px;
+    padding: 12px;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+    }
+
+    .cheat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .cheat-name {
+        font-weight: bold;
+        font-size: $font-md;
+        color: $poe-text-primary;
+      }
+
+      .cheat-priority {
+        font-size: $font-xs;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 3px;
+        color: #fff;
+      }
+    }
+
+    .cheat-division,
+    .cheat-strategy {
+      font-size: $font-sm;
+      margin-bottom: 6px;
+      line-height: 1.5;
+
+      strong {
+        color: #4caf50;
+      }
+    }
+  }
+
+  .farming-strategies {
+    margin-top: 20px;
+
+    h4 {
+      margin: 0 0 12px 0;
+      font-size: $font-lg;
+      color: #4caf50;
+    }
+
+    .strategy-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .strategy-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 4px;
+      padding: 12px;
+
+      .strategy-title {
+        font-weight: bold;
+        font-size: $font-md;
+        color: #4caf50;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+      }
+
+      .strategy-content {
+        font-size: $font-sm;
+
+        div {
+          margin-bottom: 6px;
+          line-height: 1.5;
+
+          strong {
+            color: $poe-gold;
+          }
+        }
+
+        .strategy-profit {
+          margin-top: 10px;
+          padding-top: 8px;
+          border-top: 1px solid rgba(76, 175, 80, 0.2);
+          color: $poe-gold;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  .mechanics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .mechanic-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-left: 3px solid #4caf50;
+    border-radius: 4px;
+    padding: 10px 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    .mechanic-action {
+      font-weight: bold;
+      color: #4caf50;
+      min-width: 120px;
+      font-size: $font-sm;
+    }
+
+    .mechanic-description {
+      font-size: $font-sm;
+      color: $poe-text-secondary;
+    }
+  }
+
+  .decision-guide {
+    margin-bottom: 20px;
+
+    h4 {
+      margin: 0 0 12px 0;
+      font-size: $font-lg;
+      color: #4caf50;
+    }
+
+    .decision-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .decision-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 4px;
+      padding: 12px;
+
+      .decision-title {
+        font-weight: bold;
+        font-size: $font-sm;
+        color: #4caf50;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        font-size: $font-xs;
+        line-height: 1.6;
+        color: $poe-text-secondary;
+
+        li {
+          margin-bottom: 6px;
+        }
+      }
+    }
+  }
+
+  .tips-section {
+    h4 {
+      margin: 0 0 12px 0;
+      font-size: $font-lg;
+      color: #4caf50;
+    }
+
+    .tips-list {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 4px;
+      padding: 16px 16px 16px 36px;
+      margin: 0;
+
+      li {
+        font-size: $font-sm;
+        line-height: 1.8;
+        color: $poe-text-secondary;
+        margin-bottom: 8px;
+
+        &::marker {
+          color: #4caf50;
+        }
+
+        &:hover {
+          color: $poe-text-primary;
+        }
+      }
+    }
+  }
+}
