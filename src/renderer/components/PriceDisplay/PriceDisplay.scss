@@ -1,0 +1,167 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.price-panel {
+  .price-summary {
+    margin-bottom: $spacing-lg;
+
+    .item-name {
+      color: $rarity-unique;
+      font-size: $font-lg;
+      margin-bottom: $spacing-md;
+      text-align: center;
+    }
+
+    .price-list {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+
+    .price-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid $border-primary;
+      border-radius: $radius-sm;
+      padding: $spacing-md;
+      transition: all $transition-fast;
+
+      &:hover {
+        border-color: $border-hover;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .price-main {
+        display: flex;
+        align-items: baseline;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-md;
+        padding-bottom: $spacing-sm;
+        border-bottom: 1px solid $border-secondary;
+
+        .amount {
+          color: $poe-gold;
+          font-size: $font-2xl;
+          font-weight: 700;
+        }
+
+        .currency {
+          color: $rarity-currency;
+          font-size: $font-md;
+        }
+      }
+
+      .price-details {
+        .detail-row {
+          @include flex-between;
+          margin-bottom: $spacing-xs;
+          font-size: $font-sm;
+
+          .label {
+            color: $poe-text-secondary;
+          }
+
+          .value {
+            color: $poe-text-primary;
+
+            &.high-confidence {
+              color: $success;
+            }
+
+            &.medium-confidence {
+              color: $warning;
+            }
+
+            &.low-confidence {
+              color: $danger;
+            }
+
+            &.source {
+              color: $info;
+              font-size: $font-xs;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .price-actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+
+    .btn-primary {
+      @include button-primary;
+      width: 100%;
+    }
+  }
+
+  .price-history {
+    margin-bottom: $spacing-lg;
+
+    .history-title {
+      color: $poe-gold;
+      font-size: $font-sm;
+      text-transform: uppercase;
+      margin-bottom: $spacing-sm;
+    }
+
+    .history-list {
+      max-height: 150px;
+      overflow-y: auto;
+      @include custom-scrollbar;
+    }
+
+    .history-item {
+      @include flex-between;
+      padding: $spacing-sm;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid $border-secondary;
+      border-radius: $radius-sm;
+      margin-bottom: $spacing-xs;
+      transition: all $transition-fast;
+
+      &:hover {
+        background: $bg-hover;
+        border-color: $border-hover;
+      }
+
+      .item-name {
+        color: $poe-text-primary;
+        font-size: $font-sm;
+        @include text-truncate;
+      }
+
+      .quick-check-btn {
+        @include button-base;
+        padding: $spacing-xs $spacing-sm;
+        min-width: 24px;
+        font-size: $font-xs;
+      }
+    }
+  }
+
+  .price-info {
+    .info-box {
+      display: flex;
+      gap: $spacing-sm;
+      padding: $spacing-sm;
+      background: rgba(33, 150, 243, 0.1);
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      border-radius: $radius-sm;
+
+      .info-icon {
+        color: $info;
+        font-size: $font-md;
+        font-weight: bold;
+      }
+
+      .info-text {
+        color: $poe-text-secondary;
+        font-size: $font-xs;
+        line-height: 1.4;
+      }
+    }
+  }
+}

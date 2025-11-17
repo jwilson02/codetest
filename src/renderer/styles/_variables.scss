@@ -1,0 +1,88 @@
+// POE Theme Colors
+$poe-gold: #c8aa6e;
+$poe-dark-bg: #0a0a0a;
+$poe-panel-bg: rgba(15, 15, 15, 0.95);
+$poe-panel-border: rgba(200, 170, 110, 0.3);
+$poe-text-primary: #e8e8e8;
+$poe-text-secondary: #a0a0a0;
+$poe-text-dim: #666666;
+
+// Rarity Colors
+$rarity-normal: #c8c8c8;
+$rarity-magic: #8888ff;
+$rarity-rare: #ffff77;
+$rarity-unique: #af6025;
+$rarity-currency: #aa9e82;
+$rarity-gem: #1ba29b;
+$rarity-divination: #14adc4;
+
+// UI Colors
+$accent-primary: $poe-gold;
+$accent-hover: #d4b87e;
+$accent-active: #b89957;
+$danger: #d32f2f;
+$success: #4caf50;
+$warning: #ff9800;
+$info: #2196f3;
+
+// Backgrounds
+$bg-primary: $poe-dark-bg;
+$bg-secondary: rgba(20, 20, 20, 0.9);
+$bg-panel: $poe-panel-bg;
+$bg-hover: rgba(200, 170, 110, 0.1);
+$bg-active: rgba(200, 170, 110, 0.2);
+
+// Borders
+$border-primary: $poe-panel-border;
+$border-secondary: rgba(255, 255, 255, 0.1);
+$border-hover: rgba(200, 170, 110, 0.5);
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+$shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+
+// Glass morphism
+$glass-bg: rgba(15, 15, 15, 0.7);
+$glass-border: rgba(200, 170, 110, 0.2);
+$glass-blur: blur(10px);
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Font sizes
+$font-xs: 11px;
+$font-sm: 12px;
+$font-md: 14px;
+$font-lg: 16px;
+$font-xl: 18px;
+$font-2xl: 24px;
+
+// Border radius
+$radius-sm: 2px;
+$radius-md: 4px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index
+$z-base: 1;
+$z-panel: 10;
+$z-header: 20;
+$z-modal: 100;
+$z-tooltip: 1000;
+
+// Responsive breakpoints
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1920px;

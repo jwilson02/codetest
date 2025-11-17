@@ -1,0 +1,40 @@
+{
+  "name": "poe-maxroll-build-guide",
+  "version": "1.0.0",
+  "description": "Path of Exile build guide application with Maxroll.gg integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "node server/index.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "node-cache": "^5.1.2",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "rate-limiter-flexible": "^3.0.4",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "react-scripts": "5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

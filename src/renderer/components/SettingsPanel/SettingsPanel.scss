@@ -1,0 +1,166 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.settings-panel {
+  .section-title {
+    color: $poe-gold;
+    font-size: $font-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid $border-secondary;
+  }
+
+  .settings-section {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .setting-item {
+    margin-bottom: $spacing-md;
+
+    .setting-label {
+      display: block;
+      color: $poe-text-secondary;
+      font-size: $font-sm;
+      margin-bottom: $spacing-sm;
+    }
+
+    .theme-buttons {
+      display: flex;
+      gap: $spacing-sm;
+
+      .theme-btn {
+        @include button-base;
+        flex: 1;
+
+        &.active {
+          @include button-primary;
+        }
+      }
+    }
+
+    .opacity-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: $radius-sm;
+      background: rgba(0, 0, 0, 0.5);
+      outline: none;
+      cursor: pointer;
+
+      &::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $poe-gold;
+        cursor: pointer;
+        transition: all $transition-fast;
+
+        &:hover {
+          background: $accent-hover;
+          transform: scale(1.1);
+        }
+      }
+
+      &::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $poe-gold;
+        cursor: pointer;
+        border: none;
+        transition: all $transition-fast;
+
+        &:hover {
+          background: $accent-hover;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      color: $poe-text-primary;
+      font-size: $font-sm;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        accent-color: $poe-gold;
+      }
+
+      &:hover {
+        color: $accent-hover;
+      }
+    }
+  }
+
+  .panel-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    .panel-toggle-item {
+      padding: $spacing-sm;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid $border-secondary;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      &:hover {
+        background: $bg-hover;
+        border-color: $border-hover;
+      }
+    }
+  }
+
+  .btn-danger {
+    @include button-base;
+    background: rgba(211, 47, 47, 0.2);
+    border-color: $danger;
+    color: $danger;
+
+    &:hover {
+      background: rgba(211, 47, 47, 0.3);
+      border-color: lighten($danger, 10%);
+    }
+
+    &.full-width {
+      width: 100%;
+    }
+  }
+
+  .settings-info {
+    margin-top: $spacing-lg;
+
+    .info-box {
+      display: flex;
+      gap: $spacing-sm;
+      padding: $spacing-sm;
+      background: rgba(33, 150, 243, 0.1);
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      border-radius: $radius-sm;
+
+      .info-icon {
+        color: $info;
+        font-size: $font-md;
+        font-weight: bold;
+      }
+
+      .info-text {
+        color: $poe-text-secondary;
+        font-size: $font-xs;
+        line-height: 1.4;
+      }
+    }
+  }
+}

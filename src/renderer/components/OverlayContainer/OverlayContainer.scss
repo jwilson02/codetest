@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.overlay-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  pointer-events: none;
+
+  > * {
+    pointer-events: all;
+  }
+
+  &.compact {
+    // Compact mode styling
+    font-size: $font-sm;
+
+    .panel {
+      padding: $spacing-sm;
+    }
+
+    .panel-header {
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+}

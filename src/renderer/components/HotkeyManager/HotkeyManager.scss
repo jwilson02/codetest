@@ -1,0 +1,111 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.hotkey-panel {
+  .hotkey-list {
+    margin-bottom: $spacing-lg;
+  }
+
+  .hotkey-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid $border-secondary;
+    border-radius: $radius-sm;
+    margin-bottom: $spacing-sm;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $bg-hover;
+      border-color: $border-hover;
+    }
+
+    .hotkey-info {
+      flex: 1;
+      margin-right: $spacing-md;
+
+      .hotkey-name {
+        color: $poe-text-primary;
+        font-size: $font-md;
+        font-weight: 600;
+        margin-bottom: $spacing-xs;
+      }
+
+      .hotkey-description {
+        color: $poe-text-secondary;
+        font-size: $font-xs;
+      }
+    }
+
+    .hotkey-binding {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      .hotkey-display {
+        padding: $spacing-xs $spacing-md;
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid $border-primary;
+        border-radius: $radius-sm;
+        color: $poe-gold;
+        font-size: $font-sm;
+        font-family: monospace;
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .recording-indicator {
+        padding: $spacing-xs $spacing-md;
+        background: rgba(33, 150, 243, 0.2);
+        border: 1px solid $info;
+        border-radius: $radius-sm;
+        color: $info;
+        font-size: $font-sm;
+        min-width: 100px;
+        text-align: center;
+        @include animate-pulse;
+        animation: pulse 1.5s infinite;
+      }
+
+      .edit-btn {
+        @include button-base;
+        padding: $spacing-xs $spacing-sm;
+        min-width: 60px;
+      }
+    }
+  }
+
+  .hotkey-actions {
+    margin-bottom: $spacing-lg;
+
+    .btn-primary {
+      @include button-primary;
+      width: 100%;
+    }
+  }
+
+  .hotkey-info {
+    .info-box {
+      display: flex;
+      gap: $spacing-sm;
+      padding: $spacing-sm;
+      background: rgba(33, 150, 243, 0.1);
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      border-radius: $radius-sm;
+
+      .info-icon {
+        color: $info;
+        font-size: $font-md;
+        font-weight: bold;
+      }
+
+      .info-text {
+        color: $poe-text-secondary;
+        font-size: $font-xs;
+        line-height: 1.4;
+      }
+    }
+  }
+}

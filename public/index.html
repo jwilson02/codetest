@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POE Trade Overlay</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    #root {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .poe-overlay-app {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    .app-header {
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-header h1 {
+      font-size: 18px;
+      color: #ffa500;
+    }
+
+    .league-selector select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .app-nav {
+      display: flex;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .app-nav button {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .app-nav button:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .app-nav button.active {
+      background: rgba(255, 165, 0, 0.2);
+      color: #ffa500;
+      border-bottom: 2px solid #ffa500;
+    }
+
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .rarity-unique {
+      color: #af6025;
+    }
+
+    .rarity-rare {
+      color: #ffff77;
+    }
+
+    .rarity-magic {
+      color: #8888ff;
+    }
+
+    .rarity-normal {
+      color: #c8c8c8;
+    }
+
+    .price-checker-container {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .price-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .price-stat {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .price-stat.highlighted {
+      background: rgba(255, 165, 0, 0.2);
+      border: 1px solid rgba(255, 165, 0, 0.5);
+    }
+
+    .price-stat .label {
+      display: block;
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 5px;
+    }
+
+    .price-stat .value {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="../src/App.jsx"></script>
+</body>
+</html>

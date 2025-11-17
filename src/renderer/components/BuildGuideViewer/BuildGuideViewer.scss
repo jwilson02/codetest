@@ -1,0 +1,126 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.build-panel {
+  .section-title {
+    color: $poe-gold;
+    font-size: $font-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid $border-secondary;
+  }
+
+  .build-list {
+    margin-bottom: $spacing-lg;
+
+    .build-item {
+      padding: $spacing-md;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid $border-secondary;
+      border-radius: $radius-sm;
+      margin-bottom: $spacing-sm;
+      cursor: pointer;
+      transition: all $transition-fast;
+
+      &:hover {
+        background: $bg-hover;
+        border-color: $border-hover;
+      }
+
+      &.active {
+        background: rgba(200, 170, 110, 0.2);
+        border-color: $accent-primary;
+      }
+
+      .build-header {
+        @include flex-between;
+        margin-bottom: $spacing-xs;
+
+        .build-name {
+          color: $poe-text-primary;
+          font-size: $font-md;
+          font-weight: 600;
+        }
+
+        .build-class {
+          color: $poe-gold;
+          font-size: $font-sm;
+        }
+      }
+
+      .build-meta {
+        color: $poe-text-secondary;
+        font-size: $font-xs;
+      }
+    }
+  }
+
+  .build-details {
+    margin-bottom: $spacing-lg;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid $border-primary;
+    border-radius: $radius-sm;
+
+    .detail-section {
+      margin-bottom: $spacing-lg;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .detail-title {
+        color: $poe-text-secondary;
+        font-size: $font-sm;
+        text-transform: uppercase;
+        margin-bottom: $spacing-sm;
+      }
+
+      .skill-list,
+      .item-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-xs;
+      }
+
+      .skill-tag {
+        padding: $spacing-xs $spacing-sm;
+        background: rgba(27, 162, 155, 0.2);
+        border: 1px solid rgba(27, 162, 155, 0.5);
+        border-radius: $radius-sm;
+        color: $rarity-gem;
+        font-size: $font-xs;
+      }
+
+      .item-tag {
+        padding: $spacing-xs $spacing-sm;
+        background: rgba(175, 96, 37, 0.2);
+        border: 1px solid rgba(175, 96, 37, 0.5);
+        border-radius: $radius-sm;
+        color: $rarity-unique;
+        font-size: $font-xs;
+      }
+    }
+
+    .build-actions {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+      margin-top: $spacing-md;
+
+      .btn-primary {
+        @include button-primary;
+        width: 100%;
+      }
+    }
+  }
+
+  .build-search {
+    .search-input {
+      @include input-base;
+      width: 100%;
+    }
+  }
+}

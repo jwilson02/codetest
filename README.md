@@ -1,303 +1,198 @@
-# Amazon Deal Tracker with CamelCamelCamel
+# Path of Exile Overlay - BETA v1.0.0
 
-An automated tool that scrapes your Amazon purchase history and uses CamelCamelCamel to find deals and price tracking opportunities for products you've already bought.
+<div align="center">
 
-## Features
+**A feature-rich, transparent overlay for Path of Exile**
 
-- **Amazon Purchase Scraper**: Automatically scrapes your Amazon order history
-- **CamelCamelCamel Integration**: Fetches historical price data and tracks deals
-- **Deal Detection**: Identifies products currently at or near their lowest prices
-- **Price Tracking**: Monitors products and alerts you to good deals
-- **Notifications**: Get alerts when tracked products have price drops
-- **Reports**: Generate detailed deal reports in JSON format
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Electron](https://img.shields.io/badge/Electron-27.0-blue.svg)](https://www.electronjs.org/)
+[![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 
-## Prerequisites
-
-- Python 3.8 or higher
-- Chrome/Chromium browser
-- ChromeDriver (for Selenium)
-- Amazon account credentials
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone <repository-url>
-cd codetest
-```
-
-### 2. Install Python dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Install ChromeDriver
-
-**On Ubuntu/Debian:**
-```bash
-sudo apt-get update
-sudo apt-get install chromium-chromedriver
-```
-
-**On macOS:**
-```bash
-brew install chromedriver
-```
-
-**On Windows:**
-Download from [ChromeDriver downloads](https://chromedriver.chromium.org/downloads) and add to PATH.
-
-### 4. Configure credentials
-
-Copy the example environment file and edit with your credentials:
-
-```bash
-cp .env.example .env
-nano .env  # or use your preferred editor
-```
-
-Required configuration:
-```env
-AMAZON_EMAIL=your_email@example.com
-AMAZON_PASSWORD=your_password
-```
-
-## Usage
-
-### Quick Start
-
-Scrape your Amazon orders and check for deals:
-
-```bash
-python main.py scrape
-```
-
-This will:
-1. Log in to your Amazon account
-2. Scrape your order history (default: last 5 pages)
-3. Extract all purchased products
-4. Check CamelCamelCamel for price history
-5. Identify good deals (within 10% of lowest price)
-6. Generate a deal report
-
-### Commands
-
-#### Scrape and Check Deals
-
-```bash
-python main.py scrape [options]
-```
-
-Options:
-- `--max-pages N`: Maximum order pages to scrape (default: 5)
-- `--max-products N`: Maximum products to check (default: 20)
-- `--threshold N`: Deal threshold percentage (default: 10)
-- `--show-browser`: Show browser window during scraping
-
-Examples:
-
-```bash
-# Scrape more pages
-python main.py scrape --max-pages 10
-
-# Check more products
-python main.py scrape --max-products 50
-
-# Adjust deal threshold (5% from lowest price)
-python main.py scrape --threshold 5
-
-# Show browser for debugging
-python main.py scrape --show-browser
-```
-
-#### View Tracked Products
-
-```bash
-python main.py view
-```
-
-Shows all products currently being tracked with their latest price information.
-
-#### Generate Report
-
-```bash
-python main.py report
-```
-
-Generates a JSON report of all tracked products and deals.
-
-## How It Works
-
-### 1. Amazon Scraping
-
-The scraper uses Selenium to:
-- Authenticate with your Amazon credentials
-- Navigate through your order history
-- Extract product information (ASIN, title, URL, price)
-- Handle pagination and dynamic content
-
-**Note**: If Amazon requires 2FA or CAPTCHA, the scraper will pause and wait for you to complete verification in the browser window.
-
-### 2. CamelCamelCamel Integration
-
-For each product:
-- Fetches the product page from CamelCamelCamel using the ASIN
-- Extracts current price, lowest price, and highest price
-- Calculates a "deal score" (percentage from lowest price)
-- Marks products as "good deals" if within the threshold
-
-### 3. Deal Tracking
-
-The system:
-- Stores all tracked products in `data/deals.json`
-- Maintains price history for each product
-- Generates notifications for good deals
-- Creates exportable reports
-
-## Project Structure
-
-```
-codetest/
-├── main.py                     # Main CLI interface
-├── config.py                   # Configuration management
-├── requirements.txt            # Python dependencies
-├── .env.example               # Example environment variables
-├── scrapers/
-│   ├── __init__.py
-│   └── amazon_scraper.py      # Amazon purchase scraper
-├── integrations/
-│   ├── __init__.py
-│   └── camelcamelcamel.py    # CamelCamelCamel integration
-├── core/
-│   ├── __init__.py
-│   ├── deal_tracker.py        # Deal tracking system
-│   └── notifications.py       # Notification manager
-└── data/                       # Generated data files
-    ├── amazon_orders.json     # Scraped orders
-    ├── deals.json             # Tracked products
-    └── deal_report.json       # Deal reports
-```
-
-## Output Files
-
-All data files are stored in the `data/` directory:
-
-### `amazon_orders.json`
-Raw scraped order data from Amazon:
-```json
-{
-  "scraped_at": "2025-11-10T...",
-  "total_orders": 50,
-  "orders": [...]
-}
-```
-
-### `deals.json`
-Tracked products and deal information:
-```json
-{
-  "tracked": [...],
-  "history": [...]
-}
-```
-
-### `deal_report.json`
-Summary report of all deals:
-```json
-{
-  "generated_at": "2025-11-10T...",
-  "total_tracked": 45,
-  "good_deals": 8,
-  "deals": [...]
-}
-```
-
-## Security & Privacy
-
-**Important Security Notes:**
-
-- Your Amazon credentials are stored locally in `.env` (never committed to git)
-- All data files are stored locally and not transmitted anywhere
-- The scraper only reads your order history (no modifications)
-- CamelCamelCamel requests are read-only
-- Use strong, unique passwords for your Amazon account
-- Consider using Amazon's app-specific passwords if available
-
-## Troubleshooting
-
-### Chrome/ChromeDriver Issues
-
-If you get ChromeDriver errors:
-```bash
-# Check Chrome version
-google-chrome --version
-
-# Download matching ChromeDriver from:
-# https://chromedriver.chromium.org/downloads
-```
-
-### Amazon Login Issues
-
-- **2FA Required**: The scraper will pause and wait for you to complete 2FA in the browser
-- **CAPTCHA**: Use `--show-browser` to manually solve CAPTCHAs
-- **Account Lock**: Amazon may temporarily lock your account if it detects unusual activity
-
-### Rate Limiting
-
-CamelCamelCamel may rate limit requests:
-- The scraper includes automatic delays (1-1.5 seconds between requests)
-- If you get blocked, wait a few minutes and try again
-- Consider using `--max-products` to limit the number of checks
-
-## Limitations
-
-- **Amazon Structure Changes**: Amazon may change their HTML structure, breaking the scraper
-- **CamelCamelCamel Scraping**: CamelCamelCamel doesn't have a public API, so we scrape their site (use responsibly)
-- **Rate Limits**: Both Amazon and CamelCamelCamel may rate limit or block automated access
-- **Regional Support**: Currently designed for Amazon.com (US site)
-
-## Future Enhancements
-
-Potential improvements:
-- [ ] Support for other Amazon regions (amazon.co.uk, amazon.de, etc.)
-- [ ] Email notifications for price drops
-- [ ] Web dashboard for viewing deals
-- [ ] Scheduled automatic checks (cron job)
-- [ ] Support for price tracking on products you haven't purchased
-- [ ] Integration with other price tracking services
-- [ ] Browser extension for one-click tracking
-
-## Legal Disclaimer
-
-This tool is for personal use only. By using this software:
-- You agree to Amazon's Terms of Service
-- You will not use this tool for commercial scraping
-- You will respect rate limits and not overwhelm servers
-- You understand this may violate Amazon's ToS regarding automated access
-
-Use at your own risk.
-
-## Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-
-MIT License - See LICENSE file for details
-
-## Support
-
-For issues, questions, or suggestions:
-- Open an issue on GitHub
-- Check existing issues for solutions
-- Review the troubleshooting section
+</div>
 
 ---
 
-**Happy deal hunting! 🎉**
+## 🎯 Overview
+
+POE Overlay is a powerful desktop application that provides real-time **item price checking**, **build guides from Maxroll.gg**, **currency exchange rates**, and **map mod analysis** for Path of Exile. Built with Electron, React, and TypeScript for a smooth, professional experience.
+
+## ✨ Key Features
+
+- 🔍 **Item Price Checking** - Real-time prices from POE Trade API with confidence scoring
+- 📚 **Build Guides** - Integration with Maxroll.gg for class builds and skill setups
+- 💱 **Currency Exchange** - Live rates from POE.ninja with auto-refresh
+- 🗺️ **Map Mod Checker** - Dangerous mod warnings with build-specific analysis
+- ⌨️ **Global Hotkeys** - System-wide hotkeys that work even when POE is focused
+- 🎨 **Professional UI** - Transparent overlay with draggable/resizable panels
+
+## 📦 Quick Start
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd codetest
+
+# Install dependencies
+npm install
+
+# Build the application
+npm run build
+
+# Run in development mode
+npm start
+```
+
+## ⌨️ Default Hotkeys
+
+| Hotkey | Action |
+|--------|--------|
+| **Ctrl+Shift+P** | Price check copied item |
+| **Ctrl+Shift+B** | Open build guides |
+| **Ctrl+Shift+C** | Show currency rates |
+| **Ctrl+Shift+M** | Map mod checker |
+| **Ctrl+Shift+T** | Toggle overlay |
+| **Ctrl+Shift+X** | Toggle click-through |
+
+All hotkeys are customizable in settings!
+
+## 📚 Documentation
+
+- **[User Guide](USER_GUIDE.md)** - Complete user documentation
+- **[Beta README](BETA_README.md)** - Technical details and architecture
+- **[Integration Guide](INTEGRATION_GUIDE.md)** - API integration documentation
+- **[Hotkeys Reference](HOTKEYS_REFERENCE.md)** - Complete hotkey guide
+- **[Bug Fixes](BUG_FIXES.md)** - List of fixes applied
+
+## 🏗️ Project Structure
+
+```
+codetest/
+├── src/
+│   ├── main/                  # Electron main process
+│   ├── preload/               # Secure IPC bridge
+│   ├── renderer/              # React application
+│   │   ├── components/        # 11 React components
+│   │   ├── contexts/          # State management
+│   │   └── styles/            # SCSS styling
+│   ├── services/              # Business logic
+│   │   ├── clipboardMonitor.js
+│   │   ├── itemParser.js
+│   │   ├── tradeService.js
+│   │   ├── priceChecker.js
+│   │   ├── currencyService.js
+│   │   ├── mapModService.js
+│   │   └── maxroll/           # Maxroll integration
+│   └── models/                # Data models
+├── build/                     # Webpack output
+├── docs/                      # Documentation
+└── package.json               # Dependencies
+```
+
+## 🛠️ Tech Stack
+
+- **Electron** 27.0 - Desktop framework
+- **React** 18.2 - UI library
+- **TypeScript** 5.2 - Type safety
+- **Webpack** 5 - Module bundler
+- **Sass** - CSS preprocessing
+
+## 🔒 Security
+
+- ✅ Context Isolation enabled
+- ✅ Node Integration disabled
+- ✅ Sandbox enabled
+- ✅ Secure IPC communication
+- ✅ Content Security Policy
+
+## 🚀 Development
+
+### Available Scripts
+
+```bash
+npm start          # Start development server with hot reload
+npm run build      # Build production bundle
+npm run pack       # Package application (no installer)
+npm run dist       # Build and create installer
+```
+
+### Building for Production
+
+```bash
+# Build React application
+npm run build
+
+# Package for Windows
+npm run build:win
+
+# Package for Linux
+npm run build:linux
+
+# Package for all platforms
+npm run build:all
+```
+
+## 🐛 Known Issues (Beta)
+
+- Electron may fail to install in restricted networks (use `npm install --ignore-scripts`)
+- Maxroll integration uses mock data (implement scraping for production)
+- SASS deprecation warnings (migrate to `@use` in future)
+
+## 🔮 Roadmap
+
+- [ ] Stash tab organization
+- [ ] Trade whisper management
+- [ ] Divination card tracking
+- [ ] Crafting calculator
+- [ ] Atlas strategy recommendations
+- [ ] Multi-language support
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Grinding Gear Games** - Path of Exile
+- **Maxroll.gg** - Build guides
+- **POE.ninja** - Currency rates
+- **POE Community** - Support and feedback
+
+## 📞 Support
+
+- **GitHub Issues** - Report bugs and request features
+- **Discussions** - Community Q&A
+
+---
+
+## 📋 Changelog
+
+### v1.0.0-beta (2025-11-17)
+
+**Initial Beta Release**
+
+- ✨ Item price checking with POE Trade API
+- ✨ Build guides from Maxroll.gg
+- ✨ Currency exchange tracker
+- ✨ Map mod analyzer
+- ✨ Global hotkey system
+- ✨ Draggable/resizable panels
+- ✨ Settings persistence
+- ✨ POE-themed dark UI
+
+---
+
+**Made with ❤️ for the Path of Exile community**
+
+**Happy grinding, Exiles! 💎⚔️🔥**

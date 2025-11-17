@@ -1,0 +1,181 @@
+@import './variables';
+
+// Glass morphism effect
+@mixin glass-panel {
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1px solid $glass-border;
+  box-shadow: $shadow-lg;
+}
+
+// POE panel style
+@mixin poe-panel {
+  @include glass-panel;
+  border-radius: $radius-md;
+  color: $poe-text-primary;
+}
+
+// Scrollbar styling
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: $radius-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(200, 170, 110, 0.3);
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: rgba(200, 170, 110, 0.5);
+    }
+  }
+}
+
+// Button styles
+@mixin button-base {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-primary;
+  border-radius: $radius-sm;
+  background: rgba(20, 20, 20, 0.8);
+  color: $poe-text-primary;
+  font-size: $font-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $bg-hover;
+    border-color: $border-hover;
+    color: $accent-hover;
+  }
+
+  &:active {
+    background: $bg-active;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: rgba(200, 170, 110, 0.2);
+  border-color: $accent-primary;
+  color: $accent-primary;
+
+  &:hover {
+    background: rgba(200, 170, 110, 0.3);
+    border-color: $accent-hover;
+  }
+}
+
+// Input styles
+@mixin input-base {
+  padding: $spacing-sm;
+  border: 1px solid $border-secondary;
+  border-radius: $radius-sm;
+  background: rgba(0, 0, 0, 0.5);
+  color: $poe-text-primary;
+  font-size: $font-sm;
+  transition: all $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $accent-primary;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &::placeholder {
+    color: $poe-text-dim;
+  }
+}
+
+// Rarity colors
+@mixin rarity-color($rarity) {
+  @if $rarity == 'normal' {
+    color: $rarity-normal;
+  } @else if $rarity == 'magic' {
+    color: $rarity-magic;
+  } @else if $rarity == 'rare' {
+    color: $rarity-rare;
+  } @else if $rarity == 'unique' {
+    color: $rarity-unique;
+  }
+}
+
+// Flex utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Text utilities
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@mixin animate-fadeIn($duration: 0.3s) {
+  animation: fadeIn $duration ease;
+}
+
+@mixin animate-slideIn($duration: 0.3s) {
+  animation: slideIn $duration ease;
+}
+
+@mixin animate-pulse($duration: 1.5s) {
+  animation: pulse $duration ease infinite;
+}

@@ -1,0 +1,153 @@
+.skill-tree {
+  padding: 0;
+}
+
+.skill-tree h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.tree-placeholder {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #bdc3c7;
+}
+
+.tree-placeholder p {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.tree-placeholder .note {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.tree-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.poe-tree-link,
+.planner-link {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.poe-tree-link:hover,
+.planner-link:hover {
+  background-color: #2980b9;
+}
+
+.tree-info {
+  margin-bottom: 2rem;
+}
+
+.info-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.info-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.tree-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 4px;
+}
+
+.stat-label {
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+.stat-value {
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.keystones {
+  display: grid;
+  gap: 1rem;
+}
+
+.keystone {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #e74c3c;
+}
+
+.keystone strong {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.keystone p {
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.tree-link-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.view-tree-button {
+  display: inline-block;
+  background-color: #27ae60;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.view-tree-button:hover {
+  background-color: #229954;
+}
+
+.tree-notes {
+  background: #e8f4f8;
+  border-left: 4px solid #3498db;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.tree-notes h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.tree-notes p {
+  color: #34495e;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}

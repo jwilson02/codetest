@@ -1,0 +1,104 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.info-panel {
+  .item-display {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid $border-primary;
+    border-radius: $radius-sm;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    font-family: 'Fontin-SmallCaps', serif;
+  }
+
+  .item-header {
+    margin-bottom: $spacing-md;
+
+    .item-name {
+      font-size: $font-xl;
+      font-weight: 600;
+      margin-bottom: $spacing-xs;
+    }
+
+    .item-type {
+      font-size: $font-md;
+      opacity: 0.8;
+    }
+
+    &.rarity-normal {
+      color: $rarity-normal;
+    }
+
+    &.rarity-magic {
+      color: $rarity-magic;
+    }
+
+    &.rarity-rare {
+      color: $rarity-rare;
+    }
+
+    &.rarity-unique {
+      color: $rarity-unique;
+    }
+  }
+
+  .item-property {
+    color: $poe-text-secondary;
+    font-size: $font-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  .item-separator {
+    height: 1px;
+    background: $border-secondary;
+    margin: $spacing-md 0;
+  }
+
+  .item-stats,
+  .item-mods {
+    .stat-line,
+    .mod-line {
+      color: $rarity-magic;
+      font-size: $font-sm;
+      line-height: 1.6;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  .item-corrupted {
+    color: $danger;
+    font-size: $font-md;
+    text-align: center;
+    margin-top: $spacing-md;
+    font-weight: 600;
+  }
+
+  .item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+
+    .btn-primary {
+      @include button-primary;
+      width: 100%;
+    }
+  }
+
+  .item-notes {
+    .notes-title {
+      color: $poe-gold;
+      font-size: $font-sm;
+      text-transform: uppercase;
+      margin-bottom: $spacing-sm;
+    }
+
+    .notes-textarea {
+      @include input-base;
+      width: 100%;
+      min-height: 80px;
+      resize: vertical;
+      font-family: inherit;
+    }
+  }
+}
