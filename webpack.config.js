@@ -68,13 +68,13 @@ module.exports = (env, argv) => {
       }
     },
     plugins: [
+      new webpack.ProvidePlugin({
+        global: require.resolve('./src/renderer/utils/global-shim.js')
+      }),
       new HtmlWebpackPlugin({
         template: './src/renderer/index.html',
         filename: 'index.html',
         inject: 'body'
-      }),
-      new webpack.DefinePlugin({
-        global: 'window'
       })
     ],
     devServer: {
