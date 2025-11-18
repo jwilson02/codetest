@@ -289,6 +289,23 @@ app.whenReady().then(() => {
   createWindow();
   registerShortcuts();
 
+  // Handle display changes (monitor connection/disconnection)
+  // These must be registered after app is ready
+  screen.on('display-added', (event, newDisplay) => {
+    log.info('Display added:', newDisplay.id);
+    // Could reposition window if needed
+  });
+
+  screen.on('display-removed', (event, oldDisplay) => {
+    log.info('Display removed:', oldDisplay.id);
+    // Could reposition window if needed
+  });
+
+  screen.on('display-metrics-changed', (event, display, changedMetrics) => {
+    log.info('Display metrics changed:', display.id, changedMetrics);
+    // Could resize window if needed
+  });
+
   app.on('activate', () => {
     // On macOS, re-create window when dock icon is clicked
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -308,22 +325,6 @@ app.on('window-all-closed', () => {
 app.on('will-quit', () => {
   log.info('App will quit');
   unregisterShortcuts();
-});
-
-// Handle display changes (monitor connection/disconnection)
-screen.on('display-added', (event, newDisplay) => {
-  log.info('Display added:', newDisplay.id);
-  // Could reposition window if needed
-});
-
-screen.on('display-removed', (event, oldDisplay) => {
-  log.info('Display removed:', oldDisplay.id);
-  // Could reposition window if needed
-});
-
-screen.on('display-metrics-changed', (event, display, changedMetrics) => {
-  log.info('Display metrics changed:', display.id, changedMetrics);
-  // Could resize window if needed
 });
 
 // IPC handlers
