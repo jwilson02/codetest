@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
@@ -64,6 +65,9 @@ module.exports = (env, argv) => {
         '@styles': path.resolve(__dirname, 'src/renderer/styles'),
         '@contexts': path.resolve(__dirname, 'src/renderer/contexts'),
         '@types': path.resolve(__dirname, 'src/renderer/types')
+      },
+      fallback: {
+        "global": require.resolve("global/window")
       }
     },
     plugins: [
@@ -71,6 +75,10 @@ module.exports = (env, argv) => {
         template: './src/renderer/index.html',
         filename: 'index.html',
         inject: 'body'
+      }),
+      new webpack.DefinePlugin({
+        'global': 'window',
+        'global.TYPED_ARRAY_SUPPORT': true
       })
     ],
     devServer: {
