@@ -1,3 +1,6 @@
+// Define global for Node.js modules in browser context
+window.global = window;
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
