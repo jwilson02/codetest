@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     entry: './src/renderer/index.js',
-    target: 'electron-renderer',
+    target: 'web',
     devtool: isDevelopment ? 'eval-source-map' : 'source-map',
     output: {
       path: path.resolve(__dirname, 'build'),
